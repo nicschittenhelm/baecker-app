@@ -1,4 +1,3 @@
-import 'package:backstuebchen_app/assets/constants.dart';
 import 'package:backstuebchen_app/screens/home.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +12,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: kPrimaryColor,
-        textTheme: Theme.of(context).textTheme.apply(bodyColor: kTextColor),
+        dividerTheme: DividerThemeData(
+          space: 15,
+          thickness: 1,
+          color: Colors.black26,
+          indent: 30,
+          endIndent: 30,
+        ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: KursScreen(),

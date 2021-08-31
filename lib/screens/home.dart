@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,8 +6,22 @@ class KursScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text("Home",
+          style:
+          GoogleFonts.patuaOne(
+              textStyle: TextStyle(
+                fontSize: 32,
+                color: Colors.black87,
+              )
+          ),
+        ),
+
+      ),
       body: Column(
-        children: [
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget> [
           Container(
             width: MediaQuery.of(context).size.width,
             height: 150,
@@ -19,22 +32,120 @@ class KursScreen extends StatelessWidget {
                 fit: BoxFit.cover
               ),
             ),
-            padding: const EdgeInsets.only(left: 100),
-            child: Row(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Home",
-                style:
-                  GoogleFonts.patuaOne(
-                    textStyle: TextStyle(
-                      fontSize: 50,
-                      color: Color.fromRGBO(162, 234, 255, 1),
-                      letterSpacing: 1.2,
-                    )
-                  ),
+                Container(
+                  height: 120,
+                    child: Image.asset('lib/assets/logo_white.png'),
                 ),
               ],
             ),
           ),
+
+        SizedBox(height: 50),
+
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Text(
+                "ÖFFNUNGSZEITEN",
+                style: GoogleFonts.roboto(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromRGBO(216, 125, 28, 1)
+                ),
+              ),
+          ),
+
+          Divider(),
+          SizedBox(height: 15),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                "Dienstag - Freitag",
+                  style: GoogleFonts.roboto(
+                fontSize: 16,
+                color: Colors.black87
+                  ),
+                ),
+
+                Text(
+                  "5:00 Uhr - 11:00 Uhr",
+                  style: GoogleFonts.roboto(
+                      fontSize: 16,
+                      color: Colors.black87,
+
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+
+          SizedBox(height: 5),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Samstag - Sonntag",
+                  style: GoogleFonts.roboto(
+                      fontSize: 16,
+                      color: Colors.black87
+                  ),
+                ),
+
+                Text(
+                  "7:00 Uhr - 13:00 Uhr",
+                  style: GoogleFonts.roboto(
+                    fontSize: 16,
+                    color: Colors.black87,
+
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+
+          SizedBox(height: 70),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Text(
+              "SERVICE",
+              style: GoogleFonts.roboto(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromRGBO(216, 125, 28, 1)
+              ),
+            ),
+          ),
+
+          Divider(),
+          SizedBox(height: 15),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child:
+                Text(
+                  "Bequem von zuhause bestellen, oder per Abonnement liefern lassen",
+                  style: GoogleFonts.patuaOne(
+                      fontSize: 20,
+                      color: Colors.black87
+                  ),
+                ),
+            ),
+
+
+
         ],
       ),
     );
