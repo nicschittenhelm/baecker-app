@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
           endIndent: 30,
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       ),
       home: KursScreen(),
     );

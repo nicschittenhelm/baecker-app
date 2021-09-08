@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:indexed/indexed.dart';
 
 class KursScreen extends StatelessWidget {
   @override
@@ -129,20 +130,43 @@ class KursScreen extends StatelessWidget {
             ),
           ),
 
+
           Divider(),
           SizedBox(height: 15),
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
-            child:
-                Text(
-                  "Bequem von zuhause bestellen, oder per Abonnement liefern lassen",
-                  style: GoogleFonts.patuaOne(
-                      fontSize: 20,
-                      color: Colors.black87
+            child: Stack(
+              clipBehavior: Clip.none,
+              fit: StackFit.loose,
+                children: <Widget>[
+                  Positioned(
+                    top: -100,
+                    left: 80,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 500,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(image: AssetImage("lib/assets/bread.jpg"))
+                      ),
+                    ),
                   ),
-                ),
-            ),
+
+                  Positioned(
+                    child:
+                      Text(
+                        "Bequem von zuhause bestellen, oder per Abonnement liefern lassen",
+                        style: GoogleFonts.patuaOne(
+                          fontSize: 20,
+                          color: Colors.black87
+                      ),
+                    ),
+                  ),
+
+                ],
+              ),
+          ),
+
 
 
 
