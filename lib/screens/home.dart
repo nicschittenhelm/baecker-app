@@ -44,7 +44,7 @@ class KursScreen extends StatelessWidget {
             ),
           ),
 
-        SizedBox(height: 50),
+          SizedBox(height: 50),
 
 
           Padding(
@@ -54,7 +54,7 @@ class KursScreen extends StatelessWidget {
                 style: GoogleFonts.roboto(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(216, 125, 28, 1)
+                  color: Colors.brown,
                 ),
               ),
           ),
@@ -125,7 +125,7 @@ class KursScreen extends StatelessWidget {
               style: GoogleFonts.roboto(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(216, 125, 28, 1)
+                  color: Colors.brown,
               ),
             ),
           ),
@@ -141,33 +141,86 @@ class KursScreen extends StatelessWidget {
               fit: StackFit.loose,
                 children: <Widget>[
                   Positioned(
+                    width: MediaQuery.of(context).size.width*0.4,
+                    height: MediaQuery.of(context).size.height*0.6,
                     top: -100,
-                    left: 80,
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 500,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(image: AssetImage("lib/assets/bread.png"))
+                    left: 220,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 500,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(image: AssetImage("lib/assets/bread.png"))
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                Colors.white.withOpacity(1),
+                                Colors.white.withOpacity(0.8),
+                              ],
+                              stops: [0.4,1],
+                              begin: Alignment.bottomRight,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
                   ),
 
                   Positioned(
                     child:
-                      Text(
-                        "Bequem von zuhause bestellen, oder per Abonnement liefern lassen",
-                        style: GoogleFonts.patuaOne(
-                          fontSize: 20,
-                          color: Colors.black87
+                      Container(
+                        width: 250,
+                        child: Text(
+                          "Bequem von zuhause bestellen, oder per Abonnement liefern lassen",
+                          style: GoogleFonts.patuaOne(
+                            fontSize: 20,
+                            color: Colors.black87
+                            ),
+                          ),
                       ),
-                    ),
                   ),
 
                 ],
               ),
           ),
 
+          SizedBox(height: 30),
 
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: ElevatedButton(
+              onPressed: () {
+                print('Clicked Me!');
+              },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.brown),
+                overlayColor: MaterialStateProperty.all<Color>(Colors.white.withOpacity(0.2)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18.0),
+                  ),
+                ),
+              ),
+              child: Container(
+                width: 160,
+                height: 40,
+                padding: EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Icon(Icons.navigate_next),
+                    SizedBox(width: 8,),
+                    Text('Bestellen',
+                      style: GoogleFonts.roboto(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ),
 
 
         ],

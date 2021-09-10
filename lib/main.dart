@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         dividerTheme: DividerThemeData(
           space: 15,
-          thickness: 1,
+          thickness: 3,
           color: Colors.black26,
           indent: 30,
           endIndent: 200,
