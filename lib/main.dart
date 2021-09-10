@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
           thickness: 1,
           color: Colors.black26,
           indent: 30,
-          endIndent: 30,
+          endIndent: 200,
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
         scaffoldBackgroundColor: const Color(0xFFFFFFFF),
