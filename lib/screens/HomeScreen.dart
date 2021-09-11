@@ -1,25 +1,27 @@
 import 'dart:ui';
+import 'package:backstuebchen_app/screens/ShopScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indexed/indexed.dart';
 
-class KursScreen extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text("Home",
-          style:
-          GoogleFonts.patuaOne(
-              textStyle: TextStyle(
-                fontSize: 32,
-                color: Colors.black87,
-              )
+        title:Text("Home",
+            style:
+            GoogleFonts.patuaOne(
+                textStyle: TextStyle(
+                  fontSize: 32,
+                  color: Colors.black87,
+                )
+            ),
           ),
+        centerTitle: true,
         ),
 
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget> [
@@ -190,7 +192,7 @@ class KursScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: ElevatedButton(
               onPressed: () {
-                print('Clicked Me!');
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => ShopScreen()));
               },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.brown),

@@ -1,4 +1,4 @@
-import 'package:backstuebchen_app/screens/home.dart';
+import 'package:backstuebchen_app/screens/HomeScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       ),
-      home: KursScreen(),
+      home: HomeScreen(),
     );
   }
 }
