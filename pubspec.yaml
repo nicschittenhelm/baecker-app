@@ -30,6 +30,7 @@ dependencies:
   flutter_svg: ^0.17.4
   google_fonts: ^2.1.0
   indexed: ^0.0.6
+  simple_shadow: ^0.2.0
 
 dev_dependencies:
   flutter_test:
