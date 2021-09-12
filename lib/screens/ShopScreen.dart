@@ -9,14 +9,8 @@ import 'package:google_fonts/google_fonts.dart';
 final CartController c = Get.put(CartController());
 
 
-class ShopScreen extends StatefulWidget {
+class ShopScreen extends StatelessWidget {
 
-
-  @override
-  _ShopScreenState createState() => _ShopScreenState();
-}
-
-class _ShopScreenState extends State<ShopScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +29,7 @@ class _ShopScreenState extends State<ShopScreen> {
 
       body: ListView(
         children: [
+
           Container(
             width: MediaQuery.of(context).size.width,
             height: 450,
@@ -117,70 +112,145 @@ class _ShopScreenState extends State<ShopScreen> {
             ),
           ),
 
-          ShopItem('lib/assets/hero1.jpg', 'Muffin', 'Schmeckt gut!'),
-          ShopItem('lib/assets/hero1.jpg', 'Brot', 'Schmeckt gut!'),
-          ShopItem('lib/assets/hero1.jpg', 'Kuchen', 'Schmeckt gut!'),
-          ShopItem('lib/assets/hero1.jpg', 'Toast', 'Schmeckt gut!'),
+          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Muffin", desc: "Schmeckt sehr gut!", price: 10),
+          FillMap("Muffin"),
+          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Brot", desc: "Schmeckt sehr gut!", price: 10),
+          FillMap("Brot"),
+          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Brötchen", desc: "Schmeckt sehr gut!", price: 10),
+          FillMap("Brötchen"),
+          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Kuchen", desc: "Schmeckt sehr gut!", price: 10),
+          FillMap("Kuchen"),
+          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Keks", desc: "Schmeckt sehr gut!", price: 10),
+          FillMap("Keks"),
+
 
 
 
 
         ],
       ),
-
-
-
     );
   }
+
+
+
+}
+
+Widget FillMap(String title) {
+
+  c.shoppingCart[title] = 0;
+
+  return Container(
+    height: 0,
+  );
+
 }
 
 
+class ShopItem extends StatefulWidget {
+
+  String imgPath;
+  String title;
+  String desc;
+  double price;
 
 
-Widget ShopItem(String imgPath, String title, String desc) {
+  ShopItem({Key key, @required this.imgPath, @required this.title, @required this.desc, @required this.price}) : super(key: key);
 
-  c.shoppingCart[title] = 0;
-  print("test");
-  print(c.shoppingCart);
+  _ShopItemState createState() => _ShopItemState();
+}
 
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-    child: SimpleShadow(
+class _ShopItemState extends State<ShopItem> {
+  @override
+  Widget build(BuildContext context) {
 
-      opacity: 0.2,
-      color: Colors.black54,
-      sigma: 6,
+    int _counter = 0;
+    print(c.shoppingCart);
 
-      child: Container(
-        height: 100,
-        color: Colors.white,
-        child: Row(
-          children: [
-            Container(
-              width: 100,
-              height: 100,
-              decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(imgPath),),
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      child: SimpleShadow(
+
+        opacity: 0.2,
+        color: Colors.black54,
+        sigma: 6,
+
+        child: Container(
+          height: 100,
+          color: Colors.white,
+          child: Row(
+            children: [
+              Container(
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                  image: DecorationImage(image: AssetImage(widget.imgPath),),
+                ),
               ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Text(
+                          widget.title,
+                          style: GoogleFonts.patuaOne(
+                              fontSize: 20, color: Colors.black87),
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          widget.desc,
+                          maxLines: 4,
+                          style: GoogleFonts.roboto(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              Container(
+                width: 50,
+                height: 100,
+                decoration: BoxDecoration(color: Colors.white),
+
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Text(
-                        title,
-                        style: GoogleFonts.patuaOne(
-                            fontSize: 20, color: Colors.black87),
-                        textAlign: TextAlign.left,
+
+                    Flexible(
+                      flex:3,
+                      child: IconButton(
+                        icon: Icon(Icons.keyboard_arrow_up_rounded),
+                        iconSize: 20,
+                        onPressed: () {
+
+                          setState(() {
+                            c.addItem(widget.title);
+                            print(c.shoppingCart);
+                          });
+
+                        },
+
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.topLeft,
+
+
+                    Flexible(
+                      flex: 3,
                       child: Text(
-                        desc,
+                        c.shoppingCart[widget.title].toString(),
                         maxLines: 4,
                         style: GoogleFonts.roboto(
                           fontSize: 12,
@@ -190,64 +260,32 @@ Widget ShopItem(String imgPath, String title, String desc) {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
+
+                    Flexible(
+                      flex: 3,
+                      child: IconButton(
+                          icon: Icon(Icons.keyboard_arrow_down_rounded),
+                          iconSize: 20,
+                          onPressed: () {
+
+                            setState(() {
+                              c.removeItem(widget.title);
+                              print(c.shoppingCart);
+                            });
+
+                          }
+                      ),
+                    ),
+
                   ],
                 ),
-              ),
-            ),
 
-            Container(
-              width: 50,
-              height: 100,
-              decoration: BoxDecoration(color: Colors.white),
-
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-
-                  Flexible(
-                    flex:3,
-                    child: IconButton(
-                        icon: Icon(Icons.keyboard_arrow_up_rounded),
-                        iconSize: 20,
-                        onPressed: () {
-
-                        },
-
-                    ),
-                  ),
-
-
-                  Flexible(
-                    flex: 3,
-                    child: Text(
-                      "0",
-                      maxLines: 4,
-                      style: GoogleFonts.roboto(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black54,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-
-                  Flexible(
-                    flex: 3,
-                    child: IconButton(
-                        icon: Icon(Icons.keyboard_arrow_down_rounded),
-                        iconSize: 20,
-                        onPressed: ()=>c.removeItem(title),
-                    ),
-                  ),
-
-                ],
               ),
 
-            ),
-
-          ],
+            ],
+          ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
