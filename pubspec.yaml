@@ -31,6 +31,8 @@ dependencies:
   google_fonts: ^2.1.0
   indexed: ^0.0.6
   simple_shadow: ^0.2.0
+  get: 4.1.4
+  observable_ish: ^3.0.0
 
 dev_dependencies:
   flutter_test:
