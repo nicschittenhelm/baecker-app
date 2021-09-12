@@ -5,12 +5,19 @@ import 'package:simple_shadow/simple_shadow.dart';
 import 'CartController.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'CheckoutScreen.dart';
 
 final CartController c = Get.put(CartController());
 
 
-class ShopScreen extends StatelessWidget {
+class ShopScreen extends StatefulWidget {
 
+
+  @override
+  _ShopScreenState createState() => _ShopScreenState();
+}
+
+class _ShopScreenState extends State<ShopScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +32,19 @@ class ShopScreen extends StatelessWidget {
           )),
         ),
         centerTitle: true,
+
+        actions: [
+
+          IconButton(
+              icon: Icon(Icons.shopping_cart_outlined),
+              iconSize: 30,
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckoutScreen()));
+              },
+          ),
+
+        ],
+
       ),
 
       body: ListView(
@@ -112,18 +132,12 @@ class ShopScreen extends StatelessWidget {
             ),
           ),
 
-          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Muffin", desc: "Schmeckt sehr gut!", price: 10),
+          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Muffin", desc: "Schmeckt sehr gut!", price: 10.50),
           FillMap("Muffin"),
-          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Brot", desc: "Schmeckt sehr gut!", price: 10),
+          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Brot", desc: "Schmeckt sehr gut!", price: 10.50),
           FillMap("Brot"),
-          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Brötchen", desc: "Schmeckt sehr gut!", price: 10),
-          FillMap("Brötchen"),
-          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Kuchen", desc: "Schmeckt sehr gut!", price: 10),
+          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Kuchen", desc: "Schmeckt sehr gut!", price: 10.50),
           FillMap("Kuchen"),
-          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Keks", desc: "Schmeckt sehr gut!", price: 10),
-          FillMap("Keks"),
-
-
 
 
 
@@ -131,9 +145,6 @@ class ShopScreen extends StatelessWidget {
       ),
     );
   }
-
-
-
 }
 
 Widget FillMap(String title) {
@@ -164,9 +175,7 @@ class _ShopItemState extends State<ShopItem> {
   @override
   Widget build(BuildContext context) {
 
-    int _counter = 0;
     print(c.shoppingCart);
-
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
@@ -193,15 +202,38 @@ class _ShopItemState extends State<ShopItem> {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Text(
-                          widget.title,
-                          style: GoogleFonts.patuaOne(
-                              fontSize: 20, color: Colors.black87),
-                          textAlign: TextAlign.left,
-                        ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+
+                            Container(
+                              width: MediaQuery.of(context).size.width*0.33,
+                              child: Text(
+                                widget.title,
+                                style: GoogleFonts.patuaOne(
+                                    fontSize: 18, color: Colors.black87),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.left,
+                              ),
+                            ),
+
+
+                            Text(
+                              "${widget.price.toStringAsFixed(2)} €",
+                              style: GoogleFonts.patuaOne(
+                                  fontSize: 14, color: Colors.black87),
+                              overflow: TextOverflow.visible,
+                              textAlign: TextAlign.right,
+                            ),
+
+
+                        ],
                       ),
+
+
+
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
@@ -221,7 +253,7 @@ class _ShopItemState extends State<ShopItem> {
               ),
 
               Container(
-                width: 50,
+                width: 40,
                 height: 100,
                 decoration: BoxDecoration(color: Colors.white),
 
@@ -236,9 +268,12 @@ class _ShopItemState extends State<ShopItem> {
                         iconSize: 20,
                         onPressed: () {
 
+
                           setState(() {
-                            c.addItem(widget.title);
-                            print(c.shoppingCart);
+
+
+                            c.addItem(widget.title,widget.price);
+
                           });
 
                         },
@@ -251,13 +286,11 @@ class _ShopItemState extends State<ShopItem> {
                       flex: 3,
                       child: Text(
                         c.shoppingCart[widget.title].toString(),
-                        maxLines: 4,
                         style: GoogleFonts.roboto(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
                           color: Colors.black54,
                         ),
-                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
 
@@ -269,8 +302,7 @@ class _ShopItemState extends State<ShopItem> {
                           onPressed: () {
 
                             setState(() {
-                              c.removeItem(widget.title);
-                              print(c.shoppingCart);
+                              c.removeItem(widget.title, widget.price);
                             });
 
                           }
