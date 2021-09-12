@@ -132,12 +132,9 @@ class _ShopScreenState extends State<ShopScreen> {
             ),
           ),
 
-          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Muffin", desc: "Schmeckt sehr gut!", price: 10.50),
-          FillMap("Muffin"),
-          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Brot", desc: "Schmeckt sehr gut!", price: 10.50),
-          FillMap("Brot"),
-          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Kuchen", desc: "Schmeckt sehr gut!", price: 10.50),
-          FillMap("Kuchen"),
+          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Dinkelbrot mit Sonnenblumenkernen", desc: "Schmeckt sehr gut!", price: 10.50),
+          FillMap("Dinkelbrot mit Sonnenblumenkernen"),
+
 
 
 

@@ -19,7 +19,7 @@ class CheckoutScreen extends StatelessWidget {
     String cartJson = jsonEncode(cart);
     print(cartJson);
   }
-
+  
   @override
   Widget build(BuildContext context) {
 
@@ -85,6 +85,15 @@ class CheckoutScreen extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   createJson(c.shoppingCart);
+                  
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                      const AlertDialog(title: Text('Ihre Bestellung wurde aufgegeben')
+                      ),
+                  );
+                  
+                  
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(Colors.brown),
