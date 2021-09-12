@@ -33,6 +33,8 @@ dependencies:
   simple_shadow: ^0.2.0
   get: 4.1.4
   observable_ish: ^3.0.0
+  shared_preferences: ^2.0.7
+  path_provider: ^2.0.3
 
 dev_dependencies:
   flutter_test:

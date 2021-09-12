@@ -1,14 +1,25 @@
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'CartController.dart';
 import 'package:get/get.dart';
+import 'dart:convert';
+import 'package:path_provider/path_provider.dart';
+
+
 
 final CartController c = Get.put(CartController());
 
 
 class CheckoutScreen extends StatelessWidget {
+
+  void createJson(Map<dynamic, dynamic> cart) {
+    String cartJson = jsonEncode(cart);
+    print(cartJson);
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -73,7 +84,7 @@ class CheckoutScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 70),
               child: ElevatedButton(
                 onPressed: () {
-
+                  createJson(c.shoppingCart);
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(Colors.brown),
@@ -101,7 +112,7 @@ class CheckoutScreen extends StatelessWidget {
               )
           ),
 
-
+          SizedBox(height: 80),
 
         ],
       ),
