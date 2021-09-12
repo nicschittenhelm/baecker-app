@@ -132,8 +132,29 @@ class _ShopScreenState extends State<ShopScreen> {
             ),
           ),
 
-          ShopItem(imgPath: "lib/assets/hero1.jpg", title: "Dinkelbrot mit Sonnenblumenkernen", desc: "Schmeckt sehr gut!", price: 10.50),
+          ShopItem(imgPath: "lib/assets/1.jpg", title: "Dinkelbrot mit Sonnenblumenkernen", desc: "Sonnenblumenkind. Super saftig. Gsund & munter.", price: 3.60),
           FillMap("Dinkelbrot mit Sonnenblumenkernen"),
+
+          ShopItem(imgPath: "lib/assets/2.jpg", title: "Dinkelvollkornbrot", desc: "Aromatisch. Herrlich saftig. Lecker & mild.", price: 5.20),
+          FillMap("Dinkelvollkornbrot"),
+
+          ShopItem(imgPath: "lib/assets/3.jpg", title: "Dinkelwalnussbrot", desc: "Ganze Walnüsse. Herrlich saftig. Für Körnerliebhaber.", price: 3.90),
+          FillMap("Dinkelwalnussbrot"),
+
+          ShopItem(imgPath: "lib/assets/4.jpg", title: "Eiweißbrot", desc: "Massig Eiweiß. Wenig Kohlenhydrate. Körnerbombe.", price: 3.90),
+          FillMap("Eiweißbrot"),
+
+          ShopItem(imgPath: "lib/assets/5.jpg", title: "Holzofenbrot", desc: "Brotzeitklassiker. Roggen & Weizen. Würzig.", price: 4.95),
+          FillMap("Holzofenbrot"),
+
+          ShopItem(imgPath: "lib/assets/6.jpg", title: "Holzofenbrot RoggenDinkel", desc: "Dinkel. Traditionell. Aromatisch.", price: 4.95),
+          FillMap("Holzofenbrot RoggenDinkel"),
+
+          ShopItem(imgPath: "lib/assets/7.jpg", title: "Dinkelvollkorntoast", desc: "Genuss pur. Allrounder. Weich.", price: 4.00),
+          FillMap("Dinkelvollkorntoast"),
+
+          ShopItem(imgPath: "lib/assets/8.jpg", title: "Bio Urkornbrot", desc: "Jedermanns. Urig. Mineralbombe.", price: 4.95),
+          FillMap("Bio Urkornbrot"),
 
 
 

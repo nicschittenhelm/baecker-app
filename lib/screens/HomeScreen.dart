@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: 120,
+                  height: 80,
                     child: Image.asset('lib/assets/logo_white.png'),
                 ),
               ],
@@ -106,7 +106,7 @@ class HomeScreen extends StatelessWidget {
                 ),
 
                 Text(
-                  "7:00 Uhr - 13:00 Uhr",
+                  "6:00 Uhr - 11:00 Uhr",
                   style: GoogleFonts.roboto(
                     fontSize: 16,
                     color: Colors.black87,
@@ -174,7 +174,7 @@ class HomeScreen extends StatelessWidget {
                         width: 250,
                         child: Text(
                           "Bequem von zuhause bestellen, oder per Abonnement liefern lassen",
-                          style: GoogleFonts.patuaOne(
+                          style: GoogleFonts.roboto(
                             fontSize: 20,
                             color: Colors.black87
                             ),
@@ -211,7 +211,7 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     Icon(Icons.navigate_next),
                     SizedBox(width: 8,),
-                    Text('Bestellen',
+                    Text('Entdecken',
                       style: GoogleFonts.roboto(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
