@@ -6,12 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'CartController.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
-import 'package:path_provider/path_provider.dart';
-
-
 
 final CartController c = Get.put(CartController());
-
 
 class CheckoutScreen extends StatelessWidget {
 
@@ -67,10 +63,10 @@ class CheckoutScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: c.checkoutList.map((Items) => Text(Items,
-                style: GoogleFonts.patuaOne(
-                  fontSize: 30,
+                style: GoogleFonts.roboto(
+                  fontSize: 25,
                   color: Colors.black54),
-                  overflow: TextOverflow.visible,
+                  overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
               )).toList(),
 

@@ -286,12 +286,8 @@ class _ShopItemState extends State<ShopItem> {
                         iconSize: 20,
                         onPressed: () {
 
-
                           setState(() {
-
-
                             c.addItem(widget.title,widget.price);
-
                           });
 
                         },
